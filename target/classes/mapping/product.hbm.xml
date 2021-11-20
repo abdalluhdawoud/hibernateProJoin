@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="entity.Product" table="product">
+	
+	<id name="productId">
+		<column name="product_id"/>
+			<generator class="increment"/> 
+	</id>
+	
+	<property name="productName" type="string">
+		<column  name="product_name" length="50"></column>
+	</property>
+	
+	<property name="productCompany" type="string">
+		<column name="product_company" length="50"></column>
+	</property>
+	
+	<property name="productOs" type="string">
+		<column name="product_os" length="50"></column>
+	</property>
+	
+    <many-to-one name="userm" class="entity.User"
+       column="USER_ID" not-null="true"/>
+	
+	
+</class>
+
+</hibernate-mapping>

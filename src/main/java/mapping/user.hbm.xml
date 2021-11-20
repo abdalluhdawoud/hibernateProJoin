@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name = "entity.User" table="user" >
+		
+		<id name = "id" >
+			<column name="user_id"/>
+			<generator class="increment"/> 
+		</id>
+		
+		<property name="firstName" type="string">
+			<column name="first_name" length="50"></column>
+		</property>
+		
+		<property name="lastName" type="string">
+			<column name="last_name" length="50"></column>
+		</property>
+		<property name="email" type="string">
+			<column name="email" length="100"></column>
+		</property>
+		
+		<set name="products" inverse="true" cascade="all">
+			<key column="USER_ID" not-null="true" />
+	            <one-to-many class="entity.Product"/>
+		</set>
+		
+
+	</class>
+
+</hibernate-mapping>
